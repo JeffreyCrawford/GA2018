@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/JeffreyCrawford/GA2018#readme",
   "dependencies": {
+    "@material-ui/core": "^3.2.2",
     "body-parser": "^1.18.3",
     "dotenv": "^6.1.0",
-    "eslint": "^5.7.0",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
     "mysql": "^2.16.0",
@@ -27,5 +27,6 @@
     "nodemon": "^1.18.4",
     "sequelize": "^4.39.0",
     "sequelize-auto": "^0.4.29"
-  }
+  },
+  "proxy": "http://localhost:3000"
 }

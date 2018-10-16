@@ -12,19 +12,35 @@ module.exports = (app, db, nodemailer) => {
             });
     });
 
+
+    /* Get specific attendee */
+    app.get("/api/attendees/:id", function(req, res) {
+        db.attendees.findAll({
+                where: {id: req.params.id}
+            }).then(function (data) {
+                res.send(data)
+            });
+    });
+
     /* Create attendee */
     app.post("/api/attendees", function(req, res) {
 
         db.attendees.create({
-            name: req.body.name,
-            title: req.body.title,
-            community: req.body.community,
-            county: req.body.county,
-            phone: req.body.phone,
-            email: req.body.email,
-            votingMember: req.body.votingMember,
-            checkInTime: Date.now()
-
+		fullName: req.body.fullName,
+		firstName: req.body.firstName,
+		middleName: req.body.middleName,
+		lastName: req.body.lastName,
+		jobTitle: req.body.jobTitle,
+		account: req.body.account,
+		countyAccountAccount: req.body.countyAccountAccount,
+		rsvpGa2018: req.body.rsvpGa2018,
+		proxyDesigneeGa2018: req.body.proxyDesigneeGa2018,
+		ga2018AsADesigneeFor: req.body.ga2018AsADesigneeFor,
+		nopecGeneralAssemblyMember: req.body.nopecGeneralAssemblyMember,
+		accountTypeAccountAccount: req.body.accountTypeAccountAccount,
+		gaDelegateAccountAccount: req.body.gaDelegateAccountAccount,
+		checkInTime: Date.now(),
+		badge: req.body.badge
         });
 
     });

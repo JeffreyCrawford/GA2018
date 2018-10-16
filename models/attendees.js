@@ -43,7 +43,7 @@ module.exports = function(sequelize, Sequelize) {
 			allowNull: true,
 		},
 		nopecGeneralAssemblyMember: {
-			type: Sequelize.TEXT,
+			type: Sequelize.BOOLEAN,
 			allowNull: true,
 		},
 		accountTypeAccountAccount: {
@@ -59,11 +59,9 @@ module.exports = function(sequelize, Sequelize) {
 			allowNull: true,
 		},
 		badge: {
-			type: Sequelize.BIGINT,
+			type: Sequelize.TEXT,
 			allowNull: true,
 		}
-	}, {
-		tableName: 'attendees'
 	});
 
 	return Attendee;
