@@ -1,3 +1,4 @@
+/* Database connection/configuration for Sequelize */
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('GeneralAssembly2018', 'root', 'password', {
   host: 'localhost',

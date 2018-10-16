@@ -1,5 +1,3 @@
-/* jshint indent: 1 */
-
 module.exports = function(sequelize, Sequelize) {
 	const Attendee = sequelize.define('attendee', {
 		fullName: {

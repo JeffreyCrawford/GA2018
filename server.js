@@ -1,5 +1,4 @@
 /* Express setup and router requirements */
-/* require('dotenv').config(); */
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
@@ -7,7 +6,9 @@ const router = require("./routes/index");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const db = require("./config/db.js");
+
 /* var seeds = require("./seeds.js"); */
+/* require('dotenv').config(); */
 
 
 /* Routing and request configuration */

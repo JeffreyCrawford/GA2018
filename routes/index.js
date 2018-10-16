@@ -1,3 +1,4 @@
+/* Define route path */
 const routes = [
 	require('./routes'),
 ];
