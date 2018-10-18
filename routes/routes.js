@@ -11,9 +11,9 @@ module.exports = (app, db) => {
     });
 
     /* Get specific attendee via url */
-    app.get("/api/attendees/:id", function(req, res) {
+    app.get("/api/attendees/:badge", function(req, res) {
         db.attendees.findAll({
-                where: {id: req.params.id}
+                where: {badge: req.params.badge}
             }).then(function (data) {
                 res.send(data)
             });
@@ -70,6 +70,15 @@ module.exports = (app, db) => {
         });
     });
     
+    app.put("/api/attendees/", function(req, res) {
+        db.attendees.update(
+            {checkInTime: req.body.checkInTime},
+            {where: {badge: req.body.badge}}
+        )
+    })
+
+
+
 
 
 /* DEPRECATED */

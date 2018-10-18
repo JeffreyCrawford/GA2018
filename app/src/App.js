@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import LandingPage from './Components/LandingPage';
+import WelcomePage from './Components/WelcomePage';
+import ScanPage from './Components/ScanPage';
 
 
-/* App renders the Landing Page Component */
+/* App renders the Welcome Page Component */
 class App extends Component {
   render() {
     return (
       <div>
-        <LandingPage />
+        <ScanPage />
       </div>
     );
   }

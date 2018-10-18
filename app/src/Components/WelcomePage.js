@@ -25,7 +25,7 @@ class LandingPage extends React.Component {
     return(
       <div>
         <Typography className={classes.banner} variant="h3">
-          Welcome to the NOPEC General Assembly 2018
+          Welcome Banner
         </Typography>
 
         <RetrieveAttendee />

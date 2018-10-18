@@ -7,8 +7,11 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const db = require("./config/db.js");
 
+
 /* var seeds = require("./seeds.js"); */
 /* require('dotenv').config(); */
+
+
 
 
 /* Routing and request configuration */
@@ -23,9 +26,38 @@ app.use((req, res, next) => {
 router(app, db); 
 
 
+
+
+
 /* Sync to Sequelize and start listening */
 db.sequelize.sync({force: false}).then(() => {
-	app.listen(PORT, function() {
+
+/* Reference bulk insert method */
+var Bulk = require('./config/sequelizeBulkInsert');
+
+/* var bulk = new Bulk(db.lines);
+bulk.importFile('config/lineseeds.csv', function(){
+//data is imported
+}) */
+
+/* var bulk = new Bulk(db.attendees);
+bulk.importFile('config/attendeeseeds.csv', function(){
+//data is imported
+}) */
+
+/* var bulk = new Bulk(db.badges);
+bulk.importFile('config/badgeseeds.csv', function(){
+//data is imported
+}) */
+
+	
+
+
+
+}).then(function() {
+app.listen(PORT, function() {
 	    console.log("Listening on port " + PORT)
 	})
 });
+
+

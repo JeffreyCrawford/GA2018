@@ -13,6 +13,9 @@ const sequelize = new Sequelize('GeneralAssembly2018', 'root', 'password', {
   }
 });
 
+
+
+
 /* Sequelize authentication/connection testing */
 sequelize
 .authenticate()
@@ -28,12 +31,15 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+/* Identify Models */
 db.attendees = require('../models/attendees.js')(sequelize, Sequelize);
 db.badges = require('../models/badges.js')(sequelize, Sequelize);
-
+db.lines = require('../models/lines.js')(sequelize, Sequelize);
 
 /* Associations */
-db.badges.belongsTo(db.attendees)
+db.badges.hasOne(db.attendees);
+db.lines.hasMany(db.attendees);
+
 
 
 
