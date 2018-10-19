@@ -55,7 +55,6 @@ module.exports = function(sequelize, Sequelize) {
 		checkInTime: {
 			type: Sequelize.TEXT,
 			allowNull: true,
-            defaultValue: Date.now()
 		},
 		badge: {
 			type: Sequelize.TEXT,

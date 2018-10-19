@@ -60,7 +60,7 @@ class ScanPage extends React.Component {
         nopecGeneralAssemblyMember: 0,
         accountTypeAccountAccount: "",
         gaDelegateAccountAccount: "",
-        checkInTime: new Date().toString(),
+        checkInTime: new Date().toTimeString(),
         badge: ""
     };
 
@@ -76,35 +76,74 @@ class ScanPage extends React.Component {
         });
     };
 
-    generateDate = name => event => {
-        
-    }
 
     /* Handles the submit button and executes the post request of the current state */
-    handleSubmit = event => {   
-		event.preventDefault();
-            console.log("state " + this.state)
-            fetch("/api/attendees/", {
-                method: 'PUT',
-                body: JSON.stringify(this.state),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+    checkIn = event => { 
+        fetch("/api/attendees/", {
+            method: 'PUT',
+            body: JSON.stringify(this.state),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         /* Return the get response in JSON format */
         .then(function(res) {
             return res.json()
-            
+        })
+
+
+    }   
+
+    retrieveAttendee = event => {
+        let badge = this.state.badge
+        fetch("/api/attendees/" + badge, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(function(res) {
+            return res.json()
         })
         .then(function(res) {
             alert("Hello " + res[0].firstName + " " + res[0].lastName)
         })
-    }   
+        .catch(error => {
+            alert("Invalid bar code. Please try again.")
+        })
+        .then(function() {
+            window.location.reload()
+        })
+
+    }
+
+    combineSubmit = event => {
+        event.preventDefault()
+        this.checkIn();
+        this.retrieveAttendee();
+    }
+
+
+
 
     /* Handles the cancel button and wipes the state */
 	handleCancel = event => 
 		this.setState({
-		badge: ""
+            fullName: "",
+            firstName: "",
+            middleName: "",
+            lastName: "",
+            jobTitle: "",
+            account: "",
+            countyAccountAccount: "",
+            rsvpGa2018: "",
+            proxyDesigneeGa2018: "",
+            ga2018AsADesigneeFor: "",
+            nopecGeneralAssemblyMember: 0,
+            accountTypeAccountAccount: "",
+            gaDelegateAccountAccount: "",
+            checkInTime: "",
+            badge: ""
     });
 
 	
@@ -119,6 +158,7 @@ class ScanPage extends React.Component {
 
 
                         <TextField
+                            autoFocus
                             id="badge"
                             label="badge"
                             className={classes.textField}
@@ -136,7 +176,7 @@ class ScanPage extends React.Component {
                             Cancel
                         </Button>
                         
-                        <Button onClick={this.handleSubmit} variant="contained" color="primary" className={classes.buttonSubmit}>
+                        <Button onClick={this.combineSubmit} type="submit" variant="contained" color="primary" className={classes.buttonSubmit}>
                             Submit
                         </Button>
 
