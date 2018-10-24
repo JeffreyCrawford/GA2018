@@ -35,7 +35,7 @@ module.exports = (app, db) => {
 		nopecGeneralAssemblyMember: req.body.nopecGeneralAssemblyMember,
 		accountTypeAccountAccount: req.body.accountTypeAccountAccount,
 		gaDelegateAccountAccount: req.body.gaDelegateAccountAccount,
-		checkInTime: Date.now(),
+		checkInTime: new Date().toTimeString(),
 		badge: req.body.badge
         });
     });

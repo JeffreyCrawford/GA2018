@@ -47,21 +47,23 @@ class ScanPage extends React.Component {
 
     /* Blank state to store attendee information before submission*/
     state = {
-        fullName: "",
-        firstName: "",
-        middleName: "",
-        lastName: "",
-        jobTitle: "",
-        account: "",
-        countyAccountAccount: "",
-        rsvpGa2018: "",
-        proxyDesigneeGa2018: "",
-        ga2018AsADesigneeFor: "",
-        nopecGeneralAssemblyMember: 0,
-        accountTypeAccountAccount: "",
-        gaDelegateAccountAccount: "",
-        checkInTime: new Date().toTimeString(),
-        badge: ""
+        attendees : [{
+            fullName: "",
+            firstName: "",
+            middleName: "",
+            lastName: "",
+            jobTitle: "",
+            account: "",
+            countyAccountAccount: "",
+            rsvpGa2018: "",
+            proxyDesigneeGa2018: "",
+            ga2018AsADesigneeFor: "",
+            nopecGeneralAssemblyMember: 0,
+            accountTypeAccountAccount: "",
+            gaDelegateAccountAccount: "",
+            checkInTime: new Date().toTimeString(),
+            badge: ""
+        }]
     };
 
     /* Handles the on/off switch for boolean values in the form */
@@ -121,30 +123,36 @@ class ScanPage extends React.Component {
         event.preventDefault()
         this.checkIn();
         this.retrieveAttendee();
+        this.handleCancel();
     }
 
+    wipeState = event => {
+        this.setState({})
+    }
 
 
 
     /* Handles the cancel button and wipes the state */
 	handleCancel = event => 
 		this.setState({
-            fullName: "",
-            firstName: "",
-            middleName: "",
-            lastName: "",
-            jobTitle: "",
-            account: "",
-            countyAccountAccount: "",
-            rsvpGa2018: "",
-            proxyDesigneeGa2018: "",
-            ga2018AsADesigneeFor: "",
-            nopecGeneralAssemblyMember: 0,
-            accountTypeAccountAccount: "",
-            gaDelegateAccountAccount: "",
-            checkInTime: "",
-            badge: ""
-    });
+            attendees : [{
+                fullName: "",
+                firstName: "",
+                middleName: "",
+                lastName: "",
+                jobTitle: "",
+                account: "",
+                countyAccountAccount: "",
+                rsvpGa2018: "",
+                proxyDesigneeGa2018: "",
+                ga2018AsADesigneeFor: "",
+                nopecGeneralAssemblyMember: 0,
+                accountTypeAccountAccount: "",
+                gaDelegateAccountAccount: "",
+                checkInTime: new Date().toTimeString(),
+                badge: ""
+            }]
+        });
 
 	
     /* Renders the form */
