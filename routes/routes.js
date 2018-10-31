@@ -2,13 +2,6 @@ module.exports = (app, db) => {
 
 
 /* ATTENDEE ROUTES */
-    /* Get all attendees */
-    app.get("/api/attendees", function(req, res) {
-        db.attendees.findAll({
-            }).then(function (data) {
-                res.send(data)
-            });
-    });
 
     /* Get specific attendee via url */
     app.get("/api/attendees/:badge", function(req, res) {
@@ -22,21 +15,21 @@ module.exports = (app, db) => {
     /* Create attendee and post to API*/
     app.post("/api/attendees", function(req, res) {
         db.attendees.create({
-		fullName: req.body.fullName,
-		firstName: req.body.firstName,
-		middleName: req.body.middleName,
-		lastName: req.body.lastName,
-		jobTitle: req.body.jobTitle,
-		account: req.body.account,
-		countyAccountAccount: req.body.countyAccountAccount,
-		rsvpGa2018: req.body.rsvpGa2018,
-		proxyDesigneeGa2018: req.body.proxyDesigneeGa2018,
-		ga2018AsADesigneeFor: req.body.ga2018AsADesigneeFor,
-		nopecGeneralAssemblyMember: req.body.nopecGeneralAssemblyMember,
-		accountTypeAccountAccount: req.body.accountTypeAccountAccount,
-		gaDelegateAccountAccount: req.body.gaDelegateAccountAccount,
-		checkInTime: Date.now(),
-		badge: req.body.badge
+            fullName: req.body.fullName,
+            firstName: req.body.firstName,
+            middleName: req.body.middleName,
+            lastName: req.body.lastName,
+            jobTitle: req.body.jobTitle,
+            account: req.body.account,
+            countyAccountAccount: req.body.countyAccountAccount,
+            rsvpGa2018: req.body.rsvpGa2018,
+            proxyDesigneeGa2018: req.body.proxyDesigneeGa2018,
+            ga2018AsADesigneeFor: req.body.ga2018AsADesigneeFor,
+            nopecGeneralAssemblyMember: req.body.nopecGeneralAssemblyMember,
+            accountTypeAccountAccount: req.body.accountTypeAccountAccount,
+            gaDelegateAccountAccount: req.body.gaDelegateAccountAccount,
+            checkInTime: req.body.checkInTime,
+            badge: req.body.badge
         });
     });
 

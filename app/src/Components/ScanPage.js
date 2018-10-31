@@ -45,6 +45,7 @@ const styles = theme => ({
 /* Renders a form attached to the attendee post route to push new records to the API*/
 class ScanPage extends React.Component {
 
+
     /* Blank state to store attendee information before submission*/
     state = {
         fullName: "",
@@ -96,6 +97,7 @@ class ScanPage extends React.Component {
 
     retrieveAttendee = event => {
         let badge = this.state.badge
+        console.log(badge)
         fetch("/api/attendees/" + badge, {
             method: 'GET',
             headers: {
@@ -119,8 +121,10 @@ class ScanPage extends React.Component {
 
     combineSubmit = event => {
         event.preventDefault()
-        this.checkIn();
+        this.checkIn()
         this.retrieveAttendee();
+
+        
     }
 
 
