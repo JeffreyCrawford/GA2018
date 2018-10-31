@@ -15,7 +15,6 @@ module.exports = (app, db) => {
     /* Create attendee and post to API*/
     app.post("/api/attendees", function(req, res) {
         db.attendees.create({
-<<<<<<< HEAD
 		fullName: req.body.fullName,
 		firstName: req.body.firstName,
 		middleName: req.body.middleName,
@@ -29,25 +28,8 @@ module.exports = (app, db) => {
 		nopecGeneralAssemblyMember: req.body.nopecGeneralAssemblyMember,
 		accountTypeAccountAccount: req.body.accountTypeAccountAccount,
 		gaDelegateAccountAccount: req.body.gaDelegateAccountAccount,
-		checkInTime: new Date().toTimeString(),
+		checkInTime: req.body.checkInTime,
 		badge: req.body.badge
-=======
-            fullName: req.body.fullName,
-            firstName: req.body.firstName,
-            middleName: req.body.middleName,
-            lastName: req.body.lastName,
-            jobTitle: req.body.jobTitle,
-            account: req.body.account,
-            countyAccountAccount: req.body.countyAccountAccount,
-            rsvpGa2018: req.body.rsvpGa2018,
-            proxyDesigneeGa2018: req.body.proxyDesigneeGa2018,
-            ga2018AsADesigneeFor: req.body.ga2018AsADesigneeFor,
-            nopecGeneralAssemblyMember: req.body.nopecGeneralAssemblyMember,
-            accountTypeAccountAccount: req.body.accountTypeAccountAccount,
-            gaDelegateAccountAccount: req.body.gaDelegateAccountAccount,
-            checkInTime: req.body.checkInTime,
-            badge: req.body.badge
->>>>>>> jeff
         });
     });
 
@@ -83,7 +65,7 @@ module.exports = (app, db) => {
     
     app.put("/api/attendees/", function(req, res) {
         db.attendees.update(
-            {checkInTime: req.body.checkInTime},
+            {checkInTime: new Date().toTimeString()},
             {where: {badge: req.body.badge}}
         )
     })
