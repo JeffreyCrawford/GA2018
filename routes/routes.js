@@ -7,9 +7,17 @@ module.exports = (app, db) => {
     app.get("/api/attendees/:badge", function(req, res) {
         db.attendees.findAll({
                 where: {badge: req.params.badge}
-            }).then(function (data) {
+            }).then(function(data) {
                 res.send(data)
             });
+    });
+
+    app.get("/api/accounts/:account", function(req, res) {
+        db.attendees.findAll({
+            where: {account: req.params.account}
+        }).then(function(data) {
+            res.send(data)
+        })
     });
 
     /* Create attendee and post to API*/

@@ -26,7 +26,6 @@ router(app, db);
 
 /* Sync to Sequelize and start listening. Only seed data if you force drop tables is true */
 db.sequelize.sync({force: true}).then(() => {
-	
 })
 .then(function() {
     seedData();

@@ -9,6 +9,7 @@ import yellow from '@material-ui/core/colors/yellow';
 import Paper from '@material-ui/core/Paper';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch'
+import CommunityMembers from './CommunityMembers';
 
 /* Submit New Attendee form styling */
 const styles = theme => ({
@@ -121,13 +122,39 @@ class ScanPage extends React.Component {
 
     }
 
+    retrieveAccount = event => {
+        let account = this.state.account
+        console.log(account)
+        fetch("/api/accounts/" + account, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(function(res) {
+            return res.json()
+        })
+        .then(function(res) {
+                return(
+                    <CommunityMembers />
+                )
+        })
+        .catch(error => {
+            alert("ERROR ERROR ERROR")
+        })
+    }
+
     combineSubmit = event => {
         event.preventDefault()
         this.checkIn()
         this.retrieveAttendee();
-
-        
     }
+
+    accountSubmit = event => {
+        event.preventDefault()
+        this.retrieveAccount();
+    }
+
 
     wipeState = event => {
         this.setState({})
@@ -179,6 +206,16 @@ class ScanPage extends React.Component {
                             margin="normal"
                         />
 
+                        <TextField
+                            id="account"
+                            label="account"
+                            className={classes.textField}
+                            value={this.state.account}
+                            onChange={this.handleChange('account')}
+                            style = {{width: 300}}
+                            margin="normal"
+                        />
+
                     </ListItem>
 
                     <ListItem>
@@ -187,7 +224,7 @@ class ScanPage extends React.Component {
                             Cancel
                         </Button>
                         
-                        <Button onClick={this.combineSubmit} type="submit" variant="contained" color="primary" className={classes.buttonSubmit}>
+                        <Button onClick={this.accountSubmit} type="submit" variant="contained" color="primary" className={classes.buttonSubmit}>
                             Submit
                         </Button>
 
