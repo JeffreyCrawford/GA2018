@@ -41,7 +41,7 @@ module.exports = function(sequelize, Sequelize) {
 			allowNull: true,
 		},
 		nopecGeneralAssemblyMember: {
-			type: Sequelize.BOOLEAN,
+			type: Sequelize.TEXT,
 			allowNull: true,
 		},
 		accountTypeAccountAccount: {

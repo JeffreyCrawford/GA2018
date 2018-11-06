@@ -20,6 +20,7 @@ module.exports = (app, db) => {
         })
     });
 
+
     /* Create attendee and post to API*/
     app.post("/api/attendees", function(req, res) {
         db.attendees.create({

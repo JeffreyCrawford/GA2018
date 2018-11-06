@@ -13,6 +13,7 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
+
   },
   table: {
     minWidth: 700,
@@ -35,9 +36,17 @@ class CommunityMembers extends React.Component {
     };
   }
 
+      /* Receives changes in the form and modifies the state as they happen*/
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value,
+        });
+    };
+
   componentDidMount() {
     var _this = this;
-    let account = "chardon"
+    let account = this.state.account
+    console.log("community: " + account)
     fetch("/api/accounts/" + account, {
       method: 'GET',
       headers: {

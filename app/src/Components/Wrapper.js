@@ -47,7 +47,7 @@ const styles = theme => ({
 
 
 /* Renders a form attached to the attendee post route to push new records to the API*/
-class ScanPage extends React.Component {
+class Wrapper extends React.Component {
 
 
     /* Blank state to store attendee information before submission*/
@@ -238,8 +238,8 @@ class ScanPage extends React.Component {
     }
 }
 
-ScanPage.propTypes = {
+Wrapper.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ScanPage);
+export default withStyles(styles)(Wrapper);
