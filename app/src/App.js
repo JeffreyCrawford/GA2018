@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import WelcomePage from './Components/WelcomePage';
-import ScanPage from './Components/ScanPage';
-import CommunityMembers from './Components/CommunityMembers';
+import ScanBox from './Components/ScanBox';
 import Wrapper from './Components/Wrapper'
 
 /* App renders the Welcome Page Component */

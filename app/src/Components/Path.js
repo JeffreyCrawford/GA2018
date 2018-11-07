@@ -5,7 +5,7 @@ class Path extends React.Component {
     render() {
         return(
             <div>
-                RENDER ATTENDEE
+                PATH
             </div>
         )
     }
