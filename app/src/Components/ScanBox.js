@@ -1,11 +1,37 @@
 import React, { Component } from 'react'
+import Paper from '@material-ui/core/Paper'
+import TextField from '@material-ui/core/TextField'
+import ListItem from '@material-ui/core/ListItem'
+import Button from '@material-ui/core/Button'
 
 class ScanBox extends React.Component {
+
+    /* CONSTRUCTOR + STATE */
+    constructor(props) {
+        super(props);
+        console.log(this.props)     
+    }
+
+
+
     render() {
         return(
-            <div>
-                SCAN BOX
-            </div>
+            <Paper>
+                <form>
+                    <ListItem>
+                        <TextField 
+                            autoFocus
+                            id='badge'
+                            label='badge'
+                            value={this.props.badge}
+                            onChange={this.props.children.handleChange('badge')}
+                        />
+                    </ListItem>
+                    <ListItem>
+                        <Button onClick={this.props.children.handleSubmit} />
+                    </ListItem>
+                </form>
+            </Paper>
         )
     }
 }

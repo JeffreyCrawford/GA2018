@@ -5,8 +5,8 @@ import Path from './Path'
 
 class Wrapper extends React.Component {
     /* CONSTRUCTOR + STATE */
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             fullName: '',
             firstName: '',
@@ -46,7 +46,7 @@ class Wrapper extends React.Component {
             return res.json()
         })
         .then(function(res) {
-            console.log("HERE IS WHERE IT RENDERS THE ATTENDEE")
+            console.log("attendee: " + res)
         })
         .catch(error => {
             alert("Invalid bar code. Please try again.")
@@ -80,6 +80,12 @@ class Wrapper extends React.Component {
                 'Content-Type': 'application/json'
             }
         })
+        .then(function(res) {
+            return res.json()
+        })
+        .then(function(){
+            window.location.reload()
+        })
     }
 
     handleCancel = event => {
@@ -102,13 +108,19 @@ class Wrapper extends React.Component {
         })
     }
 
+    handleSubmit = event => {
+        this.retrieveAttendee();
+        this.retrieveCommunity();
+        this.checkIn();
+    }
+
     /* RENDER */
     render() {
         return(
             <div>
-                <ScanBox />
-                <RenderAttendee />
-                <Path />
+                <ScanBox>{this}</ScanBox>
+                <RenderAttendee>{this}</RenderAttendee>
+                <Path>{this}</Path>
             </div>
         )
     }
