@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import ScanBox from './ScanBox'
 import RenderAttendee from './RenderAttendee'
 import Path from './Path'
+import CommunityMembers from './CommunityMembers';
+
+
 
 class Wrapper extends React.Component {
     /* CONSTRUCTOR + STATE */
@@ -24,7 +27,12 @@ class Wrapper extends React.Component {
             checkInTime: '',
             badge: ''
         }
+        this.baseState = this.state 
     }
+    resetForm = () => {
+      this.setState(this.baseState)
+    }
+    
 
 
     /* FUNCTIONS */
@@ -32,10 +40,14 @@ class Wrapper extends React.Component {
         this.setState({
             [name]: event.target.value
         })
-    }
+    };
+
+
 
     retrieveAttendee = event => {
         let badge = this.state.badge;
+        let self = this;
+        console.log(this.state.badge)
         fetch('/api/attendees/' + badge, {
             method: 'GET',
             headers: {
@@ -46,50 +58,57 @@ class Wrapper extends React.Component {
             return res.json()
         })
         .then(function(res) {
-            console.log("attendee: " + res)
+            self.setState({
+                fullName: res[0].fullName,
+                firstName: res[0].firstName,
+                middleName: res[0].middleName,
+                lastName: res[0].lastName,
+                jobTitle: res[0].jobTitle,
+                account: res[0].account,
+                countyAccountAccount: res[0].countyAccountAccount,
+                rsvpGa2018: res[0].rsvpGa2018,
+                proxyDesigneeGa2018: res[0].proxyDesigneeGa2018,
+                ga2018AsADesigneeFor: res[0].ga2018AsADesigneeFor,
+                nopecGeneralAssemblyMember: res[0].nopecGeneralAssemblyMember,
+                accountTypeAccountAccount: res[0].accountTypeAccountAccount,
+                gaDelegateAccountAccount: res[0].gaDelegateAccountAccount,
+                badge: res[0].badge
+            })
         })
         .catch(error => {
             alert("Invalid bar code. Please try again.")
+            window.location.reload()
         })
     }
 
-    retrieveCommunity = event => {
-        let community = this.state.account;
-        fetch('/api/accounts/' + community, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(function(res) {
-            return res.json()
-        })
-        .then(function(res) {
-            console.log("HERE IS WHERE IT RETRIEVES MEMBERS FROM THE COMMUNITY")
-        })
-        .catch(error => {
-            alert("Error, community not found")
-        })
-    }
+
+
+
+ 
 
     checkIn = event => {
-        fetch("api/attendees/", {
+        console.log(this)
+        let self = this
+        let badge = this.state.badge
+        fetch("api/attendees/badges/" + badge, {
             method: 'PUT',
             body: JSON.stringify(this.state),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        .then(function(res) {
-            return res.json()
+        .then(function() {
+            console.log(self.state)
         })
-        .then(function(){
-            window.location.reload()
+
+        .catch(error => {
+            console.log(error)
         })
     }
 
     handleCancel = event => {
-        this.setState({
+        let self = this;
+        self.setState({
             fullName: '',
             firstName: '',
             middleName: '',
@@ -106,12 +125,17 @@ class Wrapper extends React.Component {
             checkInTime: '',
             badge: ''
         })
+        console.log(self.state)
     }
 
     handleSubmit = event => {
-        this.retrieveAttendee();
-        this.retrieveCommunity();
-        this.checkIn();
+        event.preventDefault()
+        this.retrieveAttendee()
+    }
+
+    checkInButton = event => {
+        this.checkIn()
+        window.location.reload()
     }
 
     /* RENDER */
@@ -121,6 +145,7 @@ class Wrapper extends React.Component {
                 <ScanBox>{this}</ScanBox>
                 <RenderAttendee>{this}</RenderAttendee>
                 <Path>{this}</Path>
+                <CommunityMembers>{this}</CommunityMembers>
             </div>
         )
     }
