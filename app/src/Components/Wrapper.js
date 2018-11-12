@@ -75,6 +75,9 @@ class Wrapper extends React.Component {
                 badge: res[0].badge
             })
         })
+        .then(function() {
+            console.log(self.state)
+        })
         .catch(error => {
             alert("Invalid bar code. Please try again.")
             window.location.reload()
@@ -87,18 +90,19 @@ class Wrapper extends React.Component {
  
 
     checkIn = event => {
-        console.log(this)
+        console.log(this.state.badge)
         let self = this
         let badge = this.state.badge
         fetch("api/attendees/badges/" + badge, {
             method: 'PUT',
-            body: JSON.stringify(this.state),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
         .then(function() {
             console.log(self.state)
+        })
+        .then(function() {
         })
 
         .catch(error => {
@@ -135,7 +139,9 @@ class Wrapper extends React.Component {
 
     checkInButton = event => {
         this.checkIn()
-        window.location.reload()
+         
+        
+        
     }
 
     /* RENDER */

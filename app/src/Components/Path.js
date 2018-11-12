@@ -12,19 +12,7 @@ class Path extends React.Component {
     constructor(props) {
         super(props);
         console.log(this.props.children.state.nopecGeneralAssemblyMember)     
-        function MemberCheck(props) {
-            let self = this;
-            if(this.props.children.state.nopecGeneralAssemblyMember == 'Member') {
-                return(<h1>Member</h1>)
-                alert("Member")
-            }
-            else if (this.props.children.state.nopecGeneralAssemblyMember == '') {
-                return(<h1>None</h1>)
-            }
-            else {
-                return(<h1>Guest</h1>)
-            }
-        }
+
     }
 
     
@@ -39,9 +27,6 @@ class Path extends React.Component {
                 
                     <Paper>
                         PATH
-                        <Input 
-                        value={this.props.children.MemberCheck()}
-                        />
                     </Paper>
                 
                 <Divider />

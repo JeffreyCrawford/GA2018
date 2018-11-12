@@ -46,6 +46,7 @@ class CommunityMembers extends React.Component {
     componentDidUpdate() {
         let self = this
         let account = this.props.children.state.account
+        let fullName = this.props.children.state.fullName
         
         fetch('/api/attendees/accounts/' + account, {
             method: 'GET',
@@ -57,12 +58,13 @@ class CommunityMembers extends React.Component {
             return res.json()
         })
         .then(function(res) {
-            if (res[0].account !== self.state.data[0].account) {
-                self.setState({
-                    data: res
-                });
-            }
+
+            self.setState({
+                data: res
+            });
+
         })
+
         .catch(error => {
             console.log(error)
         })
