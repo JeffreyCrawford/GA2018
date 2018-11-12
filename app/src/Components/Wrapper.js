@@ -102,9 +102,6 @@ class Wrapper extends React.Component {
         .then(function() {
             console.log(self.state)
         })
-        .then(function() {
-        })
-
         .catch(error => {
             console.log(error)
         })
@@ -139,6 +136,7 @@ class Wrapper extends React.Component {
 
     checkInButton = event => {
         this.checkIn()
+        window.location.reload();
          
         
         
