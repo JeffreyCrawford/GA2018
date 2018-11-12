@@ -39,7 +39,9 @@ module.exports = (app, db) => {
 		accountTypeAccountAccount: req.body.accountTypeAccountAccount,
 		gaDelegateAccountAccount: req.body.gaDelegateAccountAccount,
 		checkInTime: req.body.checkInTime,
-		badge: req.body.badge
+		badge: req.body.badge,
+        table: req.body.table,
+        grantFlag: req.body.grantFlag
         });
     });
 

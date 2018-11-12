@@ -25,7 +25,9 @@ class Wrapper extends React.Component {
             accountTypeAccountAccount: '',
             gaDelegateAccountAccount: '',
             checkInTime: '',
-            badge: ''
+            badge: '',
+            table: '',
+            grantFlag: ''
         }
         this.baseState = this.state 
     }
@@ -72,7 +74,9 @@ class Wrapper extends React.Component {
                 nopecGeneralAssemblyMember: res[0].nopecGeneralAssemblyMember,
                 accountTypeAccountAccount: res[0].accountTypeAccountAccount,
                 gaDelegateAccountAccount: res[0].gaDelegateAccountAccount,
-                badge: res[0].badge
+                badge: res[0].badge,
+                table: res[0].table,
+                grantFlag: res[0].grantFlag
             })
         })
         .then(function() {
@@ -124,7 +128,9 @@ class Wrapper extends React.Component {
             accountTypeAccountAccount: '',
             gaDelegateAccountAccount: '',
             checkInTime: '',
-            badge: ''
+            badge: '',
+            table: '',
+            grantFlag: ''
         })
         console.log(self.state)
     }
@@ -135,8 +141,8 @@ class Wrapper extends React.Component {
     }
 
     checkInButton = event => {
+        event.preventDefault();
         this.checkIn()
-        window.location.reload();
          
         
         

@@ -59,7 +59,15 @@ module.exports = function(sequelize, Sequelize) {
 		badge: {
 			type: Sequelize.TEXT,
 			allowNull: true,
-		}
+		},
+        table: {
+			type: Sequelize.TEXT,
+			allowNull: true,
+		},
+        grantFlag: {
+			type: Sequelize.TEXT,
+			allowNull: true,
+		},
 	});
 
 	return Attendee;

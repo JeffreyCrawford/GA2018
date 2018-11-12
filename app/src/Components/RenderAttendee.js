@@ -23,6 +23,13 @@ class RenderAttendee extends React.Component {
                     <ListItem>
                         <Input
                             disableUnderline={true}
+                            id='jobTitle'
+                            label='jobTitle'
+                            value={this.props.children.state.jobTitle}
+                            onChange={this.props.children.handleChange('jobTitle')}
+                        />
+                        <Input
+                            disableUnderline={true}
                             id='fullName'
                             label='fullName'
                             value={this.props.children.state.fullName}
@@ -41,6 +48,20 @@ class RenderAttendee extends React.Component {
                             label='nopecGeneralAssemblyMember'
                             value={this.props.children.state.nopecGeneralAssemblyMember}
                             onChange={this.props.children.handleChange('nopecGeneralAssemblyMember')}
+                        />
+                        <Input
+                            disableUnderline={true}
+                            id='table'
+                            label='table'
+                            value={this.props.children.state.table}
+                            onChange={this.props.children.handleChange('table')}
+                        />
+                        <Input
+                            disableUnderline={true}
+                            id='grantFlag'
+                            label='grantFlag'
+                            value={this.props.children.state.grantFlag}
+                            onChange={this.props.children.handleChange('grantFlag')}
                         />
                     </ListItem>
 
