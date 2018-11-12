@@ -23,12 +23,20 @@ class ScanBox extends React.Component {
                             autoFocus
                             id='badge'
                             label='badge'
-                            value={this.props.badge}
+                            value={this.props.children.state.badge}
                             onChange={this.props.children.handleChange('badge')}
                         />
                     </ListItem>
                     <ListItem>
-                        <Button onClick={this.props.children.handleSubmit} />
+                        <Button 
+                            onClick= {this.props.children.handleSubmit}
+                            label='submit'
+                            type="submit"
+                        />
+                        <Button 
+                            onClick={this.props.children.checkInButton}
+                            label='Check In'
+                        />
                     </ListItem>
                 </form>
             </Paper>

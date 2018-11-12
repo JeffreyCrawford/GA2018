@@ -12,7 +12,9 @@ class Path extends React.Component {
     render() {
         return(
             <div>
-                PATH
+                <Paper>
+                    PATH
+                </Paper>
             </div>
         )
     }

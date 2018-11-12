@@ -12,13 +12,14 @@ module.exports = (app, db) => {
             });
     });
 
-    app.get("/api/accounts/:account", function(req, res) {
+    app.get("/api/attendees/accounts/:account", function(req, res) {
         db.attendees.findAll({
             where: {account: req.params.account}
         }).then(function(data) {
             res.send(data)
         })
     });
+
 
 
     /* Create attendee and post to API*/
@@ -53,11 +54,19 @@ module.exports = (app, db) => {
             });
     });
 
-    /* Get specific badge via url */
-    app.get("/api/badges/:barCode", function(req, res) {
-        db.badges.findAll({
-                where: {barCode: req.params.barCode}
+    /* Get specific account via url */
+    app.get("/api/attendees/:account", function(req, res) {
+        db.attendees.findAll({
+                where: {account: req.params.account}
             }).then(function (data) {
+                res.send(data)
+            });
+    });
+
+    app.get("/api/attendees/badges/:badge", function(req, res) {
+        db.attendees.findAll({
+                where: {badge: req.params.badge}
+            }).then(function(data) {
                 res.send(data)
             });
     });
@@ -72,10 +81,10 @@ module.exports = (app, db) => {
         });
     });
     
-    app.put("/api/attendees/", function(req, res) {
+    app.put("/api/attendees/badges/:badge", function(req, res) {
         db.attendees.update(
             {checkInTime: new Date().toTimeString()},
-            {where: {badge: req.body.badge}}
+            {where: {badge: req.params.badge}}
         )
     })
 
