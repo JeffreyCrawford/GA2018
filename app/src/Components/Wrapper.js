@@ -77,6 +77,7 @@ class Wrapper extends React.Component {
         })
         .catch(error => {
             alert("Invalid bar code. Please try again.")
+            window.location.reload()
         })
     }
 
