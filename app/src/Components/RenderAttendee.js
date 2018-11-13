@@ -56,18 +56,22 @@ class RenderAttendee extends React.Component {
                             value={"Voting Status: " + this.props.children.state.nopecGeneralAssemblyMember}
                             onChange={this.props.children.handleChange('nopecGeneralAssemblyMember')}
                         />
+                    </ListItem>
+                    <ListItem>
                         <Input
                             disableUnderline={true}
                             id='table'
                             label='table'
-                            value={this.props.children.state.table}
+                            value={"Table: " + this.props.children.state.table}
                             onChange={this.props.children.handleChange('table')}
                         />
+                    </ListItem>
+                    <ListItem>
                         <Input
                             disableUnderline={true}
                             id='grantFlag'
                             label='grantFlag'
-                            value={this.props.children.state.grantFlag}
+                            value={"Grant Flag: " + this.props.children.state.grantFlag}
                             onChange={this.props.children.handleChange('grantFlag')}
                         />
                     </ListItem>

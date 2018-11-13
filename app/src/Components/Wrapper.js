@@ -110,9 +110,6 @@ class Wrapper extends React.Component {
         .catch(error => {
             console.log(error)
         })
-        .then(function() {
-            self.handleCancel();
-        })
     }
 
     handleCancel = event => {
@@ -141,12 +138,18 @@ class Wrapper extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        this.retrieveAttendee()
+        this.retrieveAttendee();
+        document.getElementById("checkin").focus();
+        
     }
 
     checkInButton = event => {
         event.preventDefault();
-        this.checkIn()
+        this.checkIn();
+        document.getElementById("badge").focus();
+        
+        
+
          
         
         

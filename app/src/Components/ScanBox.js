@@ -41,15 +41,18 @@ class ScanBox extends React.Component {
                     <ListItem>
                         <TextField 
                             autoFocus
+                            onfocus="this.value='';"
                             id='badge'
                             label='badge'
                             value={this.props.children.state.badge}
                             onChange={this.props.children.handleChange('badge')}
+                            
                         />
                     </ListItem>
                     <ListItem>
                         <Button 
                             onClick={this.props.children.checkInButton}
+                            id='checkin'
                             label='Check In'
                             variant="contained" 
                             color="secondary" 
