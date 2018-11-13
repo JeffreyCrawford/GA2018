@@ -158,7 +158,6 @@ class Wrapper extends React.Component {
             <div>
                 <ScanBox>{this}</ScanBox>
                 <RenderAttendee>{this}</RenderAttendee>
-                <Path>{this}</Path>
                 <CommunityMembers>{this}</CommunityMembers>
             </div>
         )

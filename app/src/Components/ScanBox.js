@@ -4,11 +4,25 @@ import TextField from '@material-ui/core/TextField'
 import ListItem from '@material-ui/core/ListItem'
 import Button from '@material-ui/core/Button'
 import { Input } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+});
+
+
 
 class ScanBox extends React.Component {
 
     /* CONSTRUCTOR + STATE */
     constructor(props) {
+        
         super(props);
         console.log(this.props)     
 
@@ -19,7 +33,9 @@ class ScanBox extends React.Component {
 
 
     render() {
+
         return(
+            
             <Paper>
                 <form>
                     <ListItem>
@@ -33,14 +49,23 @@ class ScanBox extends React.Component {
                     </ListItem>
                     <ListItem>
                         <Button 
+                            onClick={this.props.children.checkInButton}
+                            label='Check In'
+                            variant="contained" 
+                            color="secondary" 
+                        >
+                        Check In
+                        </Button>
+                        <Button 
                             onClick= {this.props.children.handleSubmit}
                             label='submit'
                             type="submit"
-                        />
-                        <Button 
-                            onClick={this.props.children.checkInButton}
-                            label='Check In'
-                        />
+                            variant="contained" 
+                            color="primary" 
+                        >
+                        Retrieve
+                        </Button>
+
                     </ListItem>
                 </form>
             </Paper>
@@ -48,4 +73,8 @@ class ScanBox extends React.Component {
     }
 }
 
-export default ScanBox;
+ScanBox.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(ScanBox);

@@ -24,19 +24,22 @@ class RenderAttendee extends React.Component {
                     <ListItem>
                         <Input
                             disableUnderline={true}
-                            id='jobTitle'
-                            label='jobTitle'
-                            value={this.props.children.state.jobTitle}
-                            onChange={this.props.children.handleChange('jobTitle')}
-                        />
-                        <br></br>
-                        <Input
-                            disableUnderline={true}
                             id='fullName'
                             label='fullName'
                             value={this.props.children.state.fullName}
                             onChange={this.props.children.handleChange('fullName')}
+                            width='33%'
                         />
+                        <Input
+                            disableUnderline={true}
+                            id='jobTitle'
+                            label='jobTitle'
+                            value={this.props.children.state.jobTitle}
+                            onChange={this.props.children.handleChange('jobTitle')}
+                            fullWidth={true}
+                        />
+                    </ListItem>
+                    <ListItem>
                         <Input
                             disableUnderline={true}
                             id='account'
@@ -44,11 +47,13 @@ class RenderAttendee extends React.Component {
                             value={this.props.children.state.account}
                             onChange={this.props.children.handleChange('account')}
                         />
+                    </ListItem>
+                    <ListItem>
                         <Input
                             disableUnderline={true}
                             id='nopecGeneralAssemblyMember'
                             label='nopecGeneralAssemblyMember'
-                            value={this.props.children.state.nopecGeneralAssemblyMember}
+                            value={"Voting Status: " + this.props.children.state.nopecGeneralAssemblyMember}
                             onChange={this.props.children.handleChange('nopecGeneralAssemblyMember')}
                         />
                         <Input
