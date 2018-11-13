@@ -30,42 +30,39 @@ class CommunityMembers extends React.Component {
       order: 'asc',
       orderBy: 'name',
       selected: [],
-      data: [{}],
+      data: [],
       page: 0,
       rowsPerPage: 5,
     };
   }
 
-      /* Receives changes in the form and modifies the state as they happen*/
-    handleChange = name => event => {
-        this.setState({
-            [name]: event.target.value,
-        });
-    };
 
-    componentDidUpdate() {
+
+    componentWillReceiveProps() {
         let self = this
         let account = this.props.children.state.account
+            fetch('/api/attendees/accounts/' + account, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(res) {
+                return res.json()
+                console.log(res)
+            })
+            .then(function(res) {  
+                self.setState({
+                    data: res
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+
         
-        fetch('/api/attendees/accounts/' + account, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(function(res) {
-            return res.json()
-        })
-        .then(function(res) {
-            self.setState({
-                data: res
-            });
 
-        })
-
-        .catch(error => {
-            console.log(error)
-        })
 
     }
 

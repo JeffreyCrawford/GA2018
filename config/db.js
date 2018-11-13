@@ -33,12 +33,6 @@ db.sequelize = sequelize;
 
 /* Identify Models */
 db.attendees = require('../models/attendees.js')(sequelize, Sequelize);
-db.badges = require('../models/badges.js')(sequelize, Sequelize);
-db.lines = require('../models/lines.js')(sequelize, Sequelize);
-
-/* Associations */
-db.badges.hasOne(db.attendees);
-db.lines.hasMany(db.attendees);
 
 
 

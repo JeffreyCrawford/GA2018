@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField'
 import ListItem from '@material-ui/core/ListItem'
 import Input from '@material-ui/core/Input'
 
+
 class RenderAttendee extends React.Component {
 
     /* CONSTRUCTOR + STATE */
@@ -28,6 +29,7 @@ class RenderAttendee extends React.Component {
                             value={this.props.children.state.jobTitle}
                             onChange={this.props.children.handleChange('jobTitle')}
                         />
+                        <br></br>
                         <Input
                             disableUnderline={true}
                             id='fullName'

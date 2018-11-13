@@ -106,8 +106,12 @@ class Wrapper extends React.Component {
         .then(function() {
             console.log(self.state)
         })
+
         .catch(error => {
             console.log(error)
+        })
+        .then(function() {
+            self.handleCancel();
         })
     }
 

@@ -33,7 +33,7 @@ module.exports = function(sequelize, Sequelize) {
 			allowNull: true,
 		},
 		proxyDesigneeGa2018: {
-			type: Sequelize.TEXT,
+			type: Sequelize.STRING,
 			allowNull: true,
 		},
 		ga2018AsADesigneeFor: {
